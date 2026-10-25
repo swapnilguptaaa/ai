@@ -1,0 +1,11 @@
+{
+  "name": "AI Powered Tutor",
+  "description": "An AI-powered tutor that answers student doubts, clarifies complex topics, and generates quizzes using Gemini.",
+  "prompt": "solve the issue in ss",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
