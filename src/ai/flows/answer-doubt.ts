@@ -78,7 +78,18 @@ const answerDoubtFlow = ai.defineFlow(
     outputSchema: AnswerDoubtOutputSchema,
   },
   async input => {
-    const {output} = await answerDoubtPrompt(input);
-    return output!;
+    try {
+      const {output} = await answerDoubtPrompt(input);
+      return output!;
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      if (msg.includes('503') || msg.includes('high demand') || msg.includes('Service Unavailable')) {
+        const {output} = await answerDoubtPrompt(input, {
+          model: 'googleai/gemini-2.5-flash',
+        });
+        return output!;
+      }
+      throw err;
+    }
   }
 );
